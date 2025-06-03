@@ -23,6 +23,6 @@ const appMenuItems = [
   MenuItem(
       title: 'Tarjetas',
       subTitle: 'Contenedores personalizados',
-      link: '/card',
+      link: '/cards',
       icon: Icons.credit_card)
 ];

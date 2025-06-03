@@ -45,7 +45,9 @@ class _CustomeListTile extends StatelessWidget {
       trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
-      onTap: () {},
+      onTap: () {
+          Navigator.pushNamed(context, menuItem.link);
+      },
     );
   }
 }
