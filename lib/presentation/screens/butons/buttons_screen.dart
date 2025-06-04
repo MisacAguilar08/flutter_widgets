@@ -26,7 +26,6 @@ class _ButtonsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final colors = Theme.of(context).colorScheme;
 
     return SizedBox(
@@ -63,10 +62,36 @@ class _ButtonsView extends StatelessWidget {
                 onPressed: () {},
                 icon: Icon(Icons.brightness_6),
                 style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all<Color>(colors.primary),
-                    iconColor: WidgetStateProperty.all<Color>(colors.onPrimary)
-                    ))
+                    backgroundColor:
+                        WidgetStateProperty.all<Color>(colors.primary),
+                    iconColor:
+                        WidgetStateProperty.all<Color>(colors.onPrimary))),
+            CustomButton(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  CustomButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20.0),
+      child: Material(
+        color: colors.primary,
+        child: InkWell(
+          onTap: () {
+            print("Button tapped");
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            child: Text("Hola Mundo", style: TextStyle(color: Colors.white)),
+          ),
         ),
       ),
     );
