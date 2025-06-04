@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:funciones_widgets/config/menu/MenuItem.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
+
+    static const String name = 'home_screen';
+
     @override
     Widget build(BuildContext context) {
         return Scaffold(
@@ -45,9 +49,7 @@ class _CustomeListTile extends StatelessWidget {
       trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
-      onTap: () {
-          Navigator.pushNamed(context, menuItem.link);
-      },
+      onTap: () => context.push(menuItem.link),
     );
   }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funciones_widgets/config/theme/app_theme.dart';
-import 'package:funciones_widgets/presentation/screens/home/home_screen.dart';
 
-import 'presentation/screens/butons/buttons_screen.dart';
-import 'presentation/screens/cars/cards_screen.dart';
+import 'config/router/router.dart';
 
 
 void main() async {
@@ -16,16 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
       title: 'Clean Architecture App',
       theme: AppTheme(selectedColor: 0).getTheme(),
-      home:  HomeScreen(),
-      routes: {
-        // '/': (context) => HomeScreen(),
-        '/cards': (context) => CardsScreen(),
-        '/buttons': (context) => ButtonsScreen()
-      },
     );
   }
 }
