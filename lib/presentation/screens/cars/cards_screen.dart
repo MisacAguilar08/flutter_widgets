@@ -33,6 +33,8 @@ class _CardsView extends StatelessWidget {
       child: Column(children: [
         ...cards.map((card) =>
             _CardTpe1(label: card['label'], elevation: card['elevation'])),
+        ...cards.map((card) =>
+            _CardTpe2(label: card['label'], elevation: card['elevation'])),
       ]),
     );
   }
@@ -52,10 +54,40 @@ class _CardTpe1 extends StatelessWidget {
         child: Column(children: [
           Align(
               alignment: Alignment.topRight,
-              child: IconButton(onPressed: (){}, icon: Icon(Icons.more_vert_outlined))),
+              child: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.more_vert_outlined))),
           Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(label),
+            alignment: Alignment.bottomLeft,
+            child: Text(label),
+          )
+        ]),
+      ),
+    );
+  }
+}
+
+class _CardTpe2 extends StatelessWidget {
+  final String label;
+  final double elevation;
+  const _CardTpe2({required this.label, required this.elevation});
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(color: colors.outline, width: 1)),
+      elevation: elevation,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+        child: Column(children: [
+          Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.more_vert_outlined))),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(label),
           )
         ]),
       ),
