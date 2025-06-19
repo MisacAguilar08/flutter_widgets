@@ -20,6 +20,16 @@ final goRouter = GoRouter(
             path: '/buttons',
             name: ButtonsScreen.name,
             builder: (context, state) => ButtonsScreen(),
+        ),
+        GoRoute(
+            path: '/progress',
+            name: ProgressScreen.name,
+            builder: (context, state) => ProgressScreen(),
+        ),
+        GoRoute(
+            path: '/snackbars',
+            name: SnackbarScreen.name,
+            builder: (context, state) => SnackbarScreen(),
         )
     ],
 );
