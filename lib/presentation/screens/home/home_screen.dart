@@ -6,6 +6,8 @@ class HomeScreen extends StatelessWidget {
 
     static const String name = 'home_screen';
 
+  const HomeScreen({super.key});
+
     @override
     Widget build(BuildContext context) {
         return Scaffold(
@@ -19,7 +21,7 @@ class HomeScreen extends StatelessWidget {
 
 class _HomeView extends StatelessWidget {
 
-  const _HomeView({Key? key}) : super(key: key);
+  const _HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

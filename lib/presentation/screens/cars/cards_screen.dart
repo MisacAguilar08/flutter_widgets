@@ -11,6 +11,8 @@ const cards = <Map<String, dynamic>>[
 
 class CardsScreen extends StatelessWidget {
   static const String name = 'cards_screen';
+
+  const CardsScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +25,7 @@ class CardsScreen extends StatelessWidget {
 }
 
 class _CardsView extends StatelessWidget {
-  const _CardsView({
-    super.key,
-  });
+  const _CardsView();
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +109,7 @@ class _CardTpe3 extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Card(
-      color: colors.surfaceVariant,
+      color: colors.surfaceContainerHighest,
       elevation: elevation,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
