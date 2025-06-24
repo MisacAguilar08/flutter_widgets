@@ -50,6 +50,35 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
 
     if(!_isMounted) return;
     setState(() {});
+    moveScrollToBottom();
+  }
+
+  Future<void> onRefresh() async{
+    _isLoading = true;
+    setState(() {});
+
+    await Future.delayed(const Duration(seconds: 2));
+    if(!_isMounted) return;
+
+    _isLoading = false;
+    final lastId = _items.isNotEmpty ? _items.last : 0;
+    _items.clear();
+    _items.add(lastId+1);
+    addFiveImages();
+
+    setState(() {});
+
+  }
+
+  void moveScrollToBottom(){
+
+    if(_scrollController.position.pixels + 100 <= _scrollController.position.maxScrollExtent) return;
+
+    _scrollController.animateTo(
+        _scrollController.position.pixels + 120,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn,
+    );
   }
 
   @override
@@ -60,26 +89,31 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         context: context,
         removeTop: true,
         removeBottom: true,
-        child: ListView.builder(
-          controller: _scrollController,
-          itemCount: _items.length,
-          itemBuilder: (context, index) {
-            return FadeInImage(
-              height: 300,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              placeholder: const AssetImage("assets/images/jar-loading.gif"),
-              image: NetworkImage(
-                  'https://picsum.photos/id/${_items[index]}/500/300'),
-            );
-          },
+        child: RefreshIndicator(
+          edgeOffset: 10,
+          strokeWidth: 2.0,
+          onRefresh: onRefresh,
+          child: ListView.builder(
+            controller: _scrollController,
+            itemCount: _items.length,
+            itemBuilder: (context, index) {
+              return FadeInImage(
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                placeholder: const AssetImage("assets/images/jar-loading.gif"),
+                image: NetworkImage(
+                    'https://picsum.photos/id/${_items[index]}/500/300'),
+              );
+            },
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.pop();
         },
-        child: Icon(Icons.arrow_back),
+        child: _isLoading? CircularProgressIndicator():Icon(Icons.arrow_back),
       ),
     );
   }
