@@ -7,3 +7,4 @@ export '../../presentation/screens/infinite_scroll/infinite_scroll_screen.dart';
 export '../../presentation/screens/progress/progress_screen.dart';
 export '../../presentation/screens/snackbar/snackbar_screen.dart';
 export '../../presentation/screens/ui_controls/ui_control_screen.dart';
+export '../../presentation/screens/counter/counter_screen.dart';

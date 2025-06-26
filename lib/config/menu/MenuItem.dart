@@ -15,6 +15,16 @@ class MenuItem {
 
 const appMenuItems = [
   MenuItem(
+      title: 'Counter',
+      subTitle: 'counter',
+      link: '/counter',
+      icon: Icons.add_circle_outline),
+  MenuItem(
+      title: 'Theme Changer',
+      subTitle: 'changer colors',
+      link: '/theme-changer',
+      icon: Icons.color_lens),
+  MenuItem(
       title: 'Botones',
       subTitle: 'Varios botones flutter',
       link: '/buttons',
